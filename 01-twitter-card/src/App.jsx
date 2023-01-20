@@ -1,19 +1,15 @@
+import React from 'react';
+import './App.css'
+import { TwitterFollowCard } from './TwitterFollowCard';
+
+
 export function App() {
   return (
-  <div>
-  <h1>Twitter Card</h1>
-
-  <article>
-    <header>
-      <img src="https://unavatar.io/gfty" alt="El avatar de gfty" />
-      <div>
-        <strong>Nombre inventado</strong>
-        <span>@gfty</span>
-      </div>
-    </header>
-    <aside>
-      <button>Seguir</button>
-    </aside>
-  </article>
-  </div>);
+    <section className="App">
+      <h1>Twitter Card</h1>
+      <TwitterFollowCard username="gtfy" name="Nombre inventado" isFollowing="" />
+      <TwitterFollowCard username="pepitoperez" name="Pepito Pérez" isFollowing="" />
+      <TwitterFollowCard username="manolete" name="Manolo Terán" isFollowing="" />
+      <TwitterFollowCard username="malta" name="Manuela Fernández" isFollowing="" />
+    </section>);
 }
