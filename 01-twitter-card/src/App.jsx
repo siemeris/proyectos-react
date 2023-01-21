@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css'
 import { TwitterFollowCard } from './TwitterFollowCard';
 
 
 export function App() {
-  const formatUsername = (username) => `@${username}`; 
+  const formatUsername = (username) => `@${username}`;
 
   return (
     <section className="App">
@@ -12,22 +12,25 @@ export function App() {
       <TwitterFollowCard
         username="gtfy"
         name="Nombre inventado"
-        isFollowing={true}
+        initialIsFollowing={true}
         formatUsername={formatUsername} />
       <TwitterFollowCard
         username="pepitoperez"
         name="Pepito Pérez"
-        isFollowing={false}
+        initialIsFollowing={false}
         formatUsername={formatUsername} />
       <TwitterFollowCard
-        // username="manolete"
+        username="manolete"
         name="Manolo Terán"
-        isFollowing={false}
+        initialIsFollowing={false}
         formatUsername={formatUsername} />
       <TwitterFollowCard
         username="malta"
         name="Manuela Fernández"
-        isFollowing
+        initialIsFollowing
         formatUsername={formatUsername} />
-    </section>);
+
+    </section>
+
+  );
 }
