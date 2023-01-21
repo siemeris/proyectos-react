@@ -1,4 +1,4 @@
-export function TwitterFollowCard({ formatUsername, username, name, isFollowing }) {
+export function TwitterFollowCard({ formatUsername, username="unknown", name, isFollowing }) {
     console.log(isFollowing)
     
     return (

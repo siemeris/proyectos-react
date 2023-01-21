@@ -38,3 +38,8 @@
     border: 1px solid #000;
     transition: .3s ease background-color;
 }
+
+.tw-followCard-button:hover {
+    background-color: #09f;
+    transition: .3s ease background-color;
+}
