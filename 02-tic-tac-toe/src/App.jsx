@@ -39,6 +39,12 @@ function App() {
   //null cuando no hay ganador, false cuando hay empate
   const [winner, setWinner] = useState(null)
 
+  const checkEndGame = (newBoard) => {
+    console.log(newBoard.every((square)=>square != null))
+    return newBoard.every((square)=>(square != null))
+    
+  }
+
   const checkWinner = (boardToCheck) => {
     //revisamos todas las combinaciones ganadoras
     //para ver si Xu O ganó
@@ -73,9 +79,11 @@ function App() {
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
       setWinner(newWinner) //La actualización del estado en React es asíncrona
-    }
+    } 
     //comprobamos si el juego ha acabado en empate
-
+    else if (checkEndGame(newBoard)) {
+      setWinner(false)
+    }
   }
 
   const resetGame = () => {
@@ -87,6 +95,7 @@ function App() {
   return (
     <main className="board">
       <h1>Tic tac toe</h1>
+      <button onClick={resetGame}>Reset del juego</button>
       <section className='game'>
         {
           board.map((_, index) => {
