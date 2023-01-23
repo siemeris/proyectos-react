@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import confetti from 'canvas-confetti'
 import './App.css'
 
 const TURNS = {
@@ -78,6 +78,7 @@ function App() {
     //comprobamos si hay ganador
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
+      confetti()
       setWinner(newWinner) //La actualización del estado en React es asíncrona
     } 
     //comprobamos si el juego ha acabado en empate
