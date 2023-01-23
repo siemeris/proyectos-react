@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/siemeris/proyectos-react/issues"
   },
-  "homepage": "https://github.com/siemeris/proyectos-react#readme"
+  "homepage": "https://github.com/siemeris/proyectos-react#readme",
+  "devDependencies": {
+    "standard": "^17.0.0"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  }
 }
