@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-function App () {
+const FollowMouse = () => {
   const [enabled, setEnabled] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
@@ -13,14 +13,27 @@ function App () {
     if (enabled) {
       window.addEventListener('pointermove', handleMove)
     }
+    // Cleanup function
     return () => {
-      // Este return se ejecuta cuando se desmonta el componente (App) o cuando se actualiza el estado enabled
+      // Este return se ejecuta cuando se desmonta el componente (App) o cuando se actualiza el estado enabled, antes de ejecutar el efecto nuevo
+      // Debemos limpiar la suscripción al evento pointermove
+      console.log('cleanup')
       window.removeEventListener('pointermove', handleMove)
     }
   }, [enabled])
 
+  // Si queremos que no se vea el cursor cuando el componente está montado, podemos usar otro useEffect
+  // change body className
+  useEffect(() => {
+    document.body.classList.toggle('no-cursor', enabled)
+
+    return () => {
+      document.body.classList.remove('no-cursor')
+    }
+  }, [enabled])
+
   return (
-    <main>
+    <>
       <div style={{
         position: 'absolute',
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -37,6 +50,20 @@ function App () {
       />
       <h3>Proyecto 3</h3>
       <button onClick={() => { setEnabled(!enabled) }}>{enabled ? 'Desactivar' : 'Activar'} seguir puntero</button>
+    </>
+  )
+}
+
+function App () {
+  // Para ver cuando se monta y desmonta el componente
+  // const [mounted, setMounted] = useState(true)
+
+  return (
+    <main>
+      <FollowMouse />
+      {/* // Para ver cuando se monta y desmonta el componente
+      {mounted && <FollowMouse />}
+      <button onClick={() => setMounted(!mounted)}>Toggle mounted FollowMouse component</button> */}
     </main>
   )
 }
