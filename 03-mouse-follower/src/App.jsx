@@ -15,7 +15,9 @@ const FollowMouse = () => {
     }
     // Cleanup function
     return () => {
-      // Este return se ejecuta cuando se desmonta el componente (App) o cuando se actualiza el estado enabled, antes de ejecutar el efecto nuevo
+      // Este return se ejecuta:
+      // --> cuando se desmonta el componente (App)
+      // --> o cuando se actualiza el estado enabled, antes de ejecutar el efecto nuevo
       // Debemos limpiar la suscripción al evento pointermove
       console.log('cleanup')
       window.removeEventListener('pointermove', handleMove)
