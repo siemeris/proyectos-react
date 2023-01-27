@@ -21,3 +21,33 @@ export default defineConfig({
   plugins: [react()]
 })
 ```
+
+4. main.js
+
+```
+import { createRoot } from 'react-dom/client'
+
+const root = createRoot(document.getElementById('app'))
+
+root.render(<h1>Hello, world!</h1>)
+
+```
+
+5. main.js --> main.jsx
+
+6. En index.html, cambiar:
+  <script type="module" src="/main.js"></script>
+ por
+  <script type="module" src="/main.jsx"></script>
+
+7. Instalar Eslint:
+`npm install standard -D`
+
+y en package.json:
+```
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  }
+```
+
+8. Creamos src/App.jsx y lo importamos en el main.jsx
