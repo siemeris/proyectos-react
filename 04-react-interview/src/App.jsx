@@ -24,7 +24,7 @@ export function App () {
 
       <button onClick={handleClick}>Get New Fact</button>
 
-      <Otro />
+      {/* <Otro /> */}
     </main>
 
   )
