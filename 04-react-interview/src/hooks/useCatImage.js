@@ -12,7 +12,7 @@ export function useCatImage ({ fact }) {
     // podemos usar
     // fact.split(' ' , 3).join(' ')
     fetch(`https://cataas.com/cat/says/${firstWord}?size=50&color=red&json=true`)
-      .then(res => { res.json() })
+      .then(res => res.json())
       .then(response => {
         console.log(response)
         const { url } = response
@@ -21,6 +21,6 @@ export function useCatImage ({ fact }) {
       })
   }, [fact])
 
-  if (!imageUrl) return { imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png' }
+  // if (!imageUrl) return { imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png' }
   return { imageUrl: `${CAT_PREFIX_IMAGE_URL}${imageUrl}` }
 }

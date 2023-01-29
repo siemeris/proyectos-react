@@ -51,3 +51,11 @@ y en package.json:
 ```
 
 8. Creamos src/App.jsx y lo importamos en el main.jsx
+
+
+Para el testing
+
+```
+npm init playwright@latest
+
+```
