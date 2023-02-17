@@ -1,6 +1,6 @@
 # Proyectos de React
 
-Proyectos autodidactos de React basados en el [curso de midudev](https://github.com/midudev/aprendiendo-react)
+Proyectos autodidácticos de React basados en el [curso de midudev](https://github.com/midudev/aprendiendo-react)
 
 ## Proyectos
 
