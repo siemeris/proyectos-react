@@ -1,14 +1,22 @@
 import { useState } from 'react'
 import './App.css'
-import responseMovies from './mocks/with-results.json'
-import withoutResults from './mocks/no-results.json'
-import {Movies} from './components/Movies'
+// import responseMovies from './mocks/with-results.json'
+// import withoutResults from './mocks/no-results.json'
+import { useMovies } from './hooks/useMovies'
+import { Movies } from './components/Movies'
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  const movies = responseMovies.Search
-  const hasMovies = movies?.length > 0
+  const{ movies} = useMovies()
+
+  // const movies = responseMovies.Search
+  // // Mapeamos los datos de la API como buena práctica, por si en un futuro estos datos son renombrados
+  // const mappedMovies = movies?.map(movie =>({
+  //   id: movie.imdbID,
+  //   title: movie.Title,
+  //   year: movie.Year,
+  //   img: movie.Poster
+  // }) )
 
   return (
     <div className='page'>
