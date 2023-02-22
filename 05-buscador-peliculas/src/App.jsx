@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import './App.css'
 // import responseMovies from './mocks/with-results.json'
 // import withoutResults from './mocks/no-results.json'
@@ -9,12 +9,15 @@ function useSearch () {
 
   const [search, updateSearch] = useState('')
   const [error, setError] = useState(null)
+  //Para que el mensaje de "No se puede buscar una película vacía" no aparezca
+  //en el primer renderizado, usamos un useRef
+  const isFirstInput = useRef(true)
 
   useEffect(() => {
-    // if (isFirstInput.current) {
-    //   isFirstInput.current = search === ''
-    //   return
-    // }
+    if (isFirstInput.current) {
+       isFirstInput.current = search === ''
+       return
+     }
 
     if (search === '') {
       setError('No se puede buscar una película vacía')
