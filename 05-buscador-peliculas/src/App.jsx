@@ -43,9 +43,10 @@ return {search, updateSearch, error}
 
 function App() {
 
-  const { movies } = useMovies()
+
   // const inputRef = useRef()
   const {search, updateSearch, error} = useSearch()
+  const { movies, getMovies } = useMovies({search})
 
 
   const handleSubmit = (event) => {
@@ -59,11 +60,12 @@ function App() {
     //En nuestro caso os interesa query
     // const {query} = Object.fromEntries(new window.FormData(event.target))
     // console.log(query)
+    getMovies()
   }
 
   const handleChange = (event) => {
     updateSearch(event.target.value)
-    console.log(search)
+    
   }
 
   return (
