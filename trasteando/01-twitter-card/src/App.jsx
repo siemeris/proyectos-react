@@ -28,9 +28,6 @@ function App() {
       avatar: 'https://unavatar.io/pepe'
     }]
 
-    const addAt = (username) => {
-    return `@${username}`
-    }
 
   return (
     <div className="App">
