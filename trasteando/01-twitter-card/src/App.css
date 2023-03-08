@@ -49,6 +49,28 @@ img {
 
   background:transparent;
   color: #fff;
-  width: 140px;
+  width: 280px;
 
 }
+
+.card-button.is-following:hover {
+  color:red;
+}
+
+.card-button-unfollowing{
+  display:none;
+}
+.card-button-text{
+  display:block;
+}
+
+.card-button.is-following:hover .card-button-unfollowing{
+  display:block;
+  color:red;
+}
+
+
+.card-button.is-following:hover .card-button-text{
+  display: none;
+}
+

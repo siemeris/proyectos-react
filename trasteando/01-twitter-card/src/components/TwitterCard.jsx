@@ -16,7 +16,9 @@ const TwitterCard = ({name, username, initialIsFollowing, addAt}) => {
           <span> {addAt(username)}</span>
         </div>
         <button className={isFollowing ? "card-button is-following" : "card-button"} onClick={()=>{setIsFollowing(!isFollowing)}}> 
-        {isFollowing ? "Siguiendo" : "Seguir"}</button>
+        <span className="card-button-text">{isFollowing ? "Siguiendo" : "Seguir"}</span>
+        <span className="card-button-unfollowing">Dejar de seguir</span>
+        </button>
       </div>
     )
 
