@@ -5,25 +5,37 @@ import './App.css'
 function App() {
 
   const [data, setData] = useState()
-  const [primeraPalabra, setPrimeraPalabra] = useState()
+  const ENDPOINT_HECHO = "https://catfact.ninja/fact"
+  // const ENDPOINT_IMAGE = `https://cataas.com/cat/says/${primeraPalabra}?json=true`
+  const [imageUrl, setImageUrl] = useState()
 
-  
-  useEffect(()=>{
-    fetch("https://catfact.ninja/fact")
-    .then((res)=>res.json())
-    .then((response)=>{
-      setData(response.fact)
-      setPrimeraPalabra(data.split(' ')[0])
-    })
 
-  },[])
+  useEffect(() => {
+    fetch(ENDPOINT_HECHO)
+      .then((res) => res.json()) //La respuesta la transformamos a JSON
+      .then((response) => {
+        const {fact} = response
+        setData(fact)
+        const primeraPalabra = fact.split(' ')[0]
+   // `https://cataas.com/cat/says/${primeraPalabra}?json=true`
+
+        fetch(`https://cataas.com/cat/says/${primeraPalabra}?json=true`)
+      .then((res) => res.json())
+      .then(response => setImageUrl(response.url))
+      })
+  }, [])
+
 
   return (
     <div className="App">
-      <h1>haciendo fetching</h1>
-      <p>{data}</p>
+      <h1>Prueba técnica</h1>
+      <section>
+        <div>
+      {data && <p>{data}</p>}
       <p>La primera palabra del hecho: {data ? data.split(' ')[0] : "loading..."}</p>
-      <img src={`https://cataas.com/cat/says/${primeraPalabra}`}></img>
+      </div>
+      {imageUrl && <img src={`https://cataas.com/${imageUrl}`}></img>}
+      </section>
     </div>
   )
 }
