@@ -1,0 +1,21 @@
+main {
+  display:flex;
+  justify-content: center;
+}
+
+h1{
+    text-align: center;
+  }
+
+form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards-movies {
+  width:100%;
+  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+}
