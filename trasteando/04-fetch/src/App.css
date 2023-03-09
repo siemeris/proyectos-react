@@ -41,6 +41,7 @@
   color: #888;
 } */
 
+
 section{
   display: flex;
   justify-content: space-between;
@@ -53,4 +54,10 @@ section{
 section img{
   max-width: 320px;
   height: auto;
+}
+.button-changefact{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
 }
