@@ -9,13 +9,15 @@ function useSearch () {
 
   const [search, updateSearch] = useState('')
   const [error, setError] = useState(null)
+  
   //Para que el mensaje de "No se puede buscar una película vacía" no aparezca
   //en el primer renderizado, usamos un useRef
-  const isFirstInput = useRef(true)
+  const isFirstInput = useRef(true) //Para saber si el usuario ha utilizado o no todavía el input
+  //Para que se valide a partir de que el usuario utilice el input
 
   useEffect(() => {
     if (isFirstInput.current) {
-       isFirstInput.current = search === ''
+       isFirstInput.current = search === '' //En cuanto se escriba algo isFirstInput cambiaría a false
        return
      }
 
