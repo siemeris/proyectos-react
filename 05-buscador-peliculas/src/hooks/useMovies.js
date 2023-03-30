@@ -41,6 +41,8 @@ export function useMovies({search, sort}) {
     const sortedMovies = useMemo(()=>{
       return sort ? [...mappedMovies].sort((a,b)=>a.title.localeCompare(b.title)) : mappedMovies
     },[sort, mappedMovies])
+    //Usamos useMemo para poder memorizar computaciones que hemos hecho que queremos evitar que
+    //se hagan a no ser que cambien las dependencias que estamos especificando
 
     return {movies: sortedMovies, getMovies}
   }
