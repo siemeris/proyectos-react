@@ -1,6 +1,6 @@
 import withResults from '../mocks/with-results.json'
 import withoutResults from '../mocks/no-results.json'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 const API_KEY = '9b0e8ff2'
 
@@ -16,11 +16,16 @@ export function useMovies({search}) {
       img: movie.Poster
     }) )
 
+    // Usamos useRef para evitar que se haga la misma búsqueda dos veces seguidas:
+    const previousSearch = useRef(search) //se guarda la referencia y no se cambia por renderizado
+
     const getMovies = ()=>{
+        if(search === previousSearch.current) return
         if(search === '') return null // Si es vacío, no hacemos el fetching de datos
         
         if(search){
           // setResponseMovies(withResults)
+          previousSearch.current = search // para evitar misma búsqueda dos veces seguidas
           fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`)
             .then(res => res.json())
             .then(json => setResponseMovies(json))
