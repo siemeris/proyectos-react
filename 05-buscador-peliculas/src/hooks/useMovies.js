@@ -4,7 +4,7 @@ import { useRef, useState } from 'react'
 
 const API_KEY = '9b0e8ff2'
 
-export function useMovies({search}) {
+export function useMovies({search, sort}) {
     const [responseMovies, setResponseMovies] = useState([])
 
     const movies = responseMovies.Search
@@ -36,5 +36,8 @@ export function useMovies({search}) {
     }
 
     console.log({movies: mappedMovies})
-    return {movies: mappedMovies, getMovies}
+
+    const sortedMovies = sort ? [...mappedMovies].sort((a,b)=>a.title.localeCompare(b.title)) : mappedMovies
+
+    return {movies: sortedMovies, getMovies}
   }

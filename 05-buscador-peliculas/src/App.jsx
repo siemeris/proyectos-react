@@ -45,10 +45,11 @@ return {search, updateSearch, error}
 
 function App() {
 
+  const [sort, setSort] = useState(false) //Para ordenar películas
 
   // const inputRef = useRef()
   const {search, updateSearch, error} = useSearch()
-  const { movies, getMovies } = useMovies({search})
+  const { movies, getMovies } = useMovies({search, sort})
 
 
   const handleSubmit = (event) => {
@@ -63,6 +64,10 @@ function App() {
     // const {query} = Object.fromEntries(new window.FormData(event.target))
     // console.log(query)
     getMovies()
+  }
+
+  const handleSort = () =>{
+    setSort(!sort)
   }
 
   const handleChange = (event) => {
@@ -80,6 +85,8 @@ function App() {
               border: '1px solid transparent',
               borderColor: error ? 'red' : 'transparent'
             }} onChange={handleChange} value={search} name="query" type="text" placeholder="Avengers, Star Wars, Matrix"></input>
+          
+          <input type="checkbox" onChange={handleSort}></input>
           <button type="submit">Buscar</button>
         </form>
 
