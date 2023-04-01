@@ -71,7 +71,12 @@ function App() {
   }
 
   const handleChange = (event) => {
-    updateSearch(event.target.value)
+    // updateSearch(event.target.value)
+
+    //Para que se haga búsqueda de la película a medida que escribo
+    const newSearch = event.target.value
+    updateSearch(newSearch)
+    getMovies({movies: newSearch})
     
   }
 
