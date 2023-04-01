@@ -1,9 +1,10 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import './App.css'
 // import responseMovies from './mocks/with-results.json'
 // import withoutResults from './mocks/no-results.json'
 import { useMovies } from './hooks/useMovies'
 import { Movies } from './components/Movies'
+import debounce from 'just-debounce-it'
 
 function useSearch () {
 
@@ -52,6 +53,10 @@ function App() {
   const { movies, getMovies } = useMovies({search, sort})
 
 
+  const debouncedGetMovies = useCallback(debounce( search => {
+    getMovies({search})
+  },300),[])
+
   const handleSubmit = (event) => {
     event.preventDefault()
     // const value = inputRef.current.value
@@ -66,6 +71,7 @@ function App() {
     getMovies()
   }
 
+
   const handleSort = () =>{
     setSort(!sort)
   }
@@ -76,7 +82,8 @@ function App() {
     //Para que se haga búsqueda de la película a medida que escribo
     const newSearch = event.target.value
     updateSearch(newSearch)
-    getMovies({movies: newSearch})
+    // getMovies({movies: newSearch})
+    debouncedGetMovies(newSearch)
     
   }
 
