@@ -7,6 +7,7 @@ import { IS_DEVELOPMENT } from './config'
 import { FiltersContext } from './context/filters'
 import { useFilters } from './hooks/useFilters'
 import { Cart } from './components/Cart'
+import { CartProvider } from './context/cart'
 
 
 
@@ -17,12 +18,12 @@ function App() {
   const filteredProducts = filterProducts(products)
 
   return (
-    <>
+    <CartProvider>
       <Header />
       <Cart />
       <Products products={filteredProducts} />
       {IS_DEVELOPMENT && <Footer />}
-    </>
+    </ CartProvider>
   )
 }
 
