@@ -3,6 +3,7 @@ import { Products } from './components/Products'
 import { useState } from 'react'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
+import { IS_DEVELOPMENT } from './config'
 
 function useFilters (){
  
@@ -26,21 +27,21 @@ function useFilters (){
     })
   }
   
-  return {filterProducts,setFilters }
+  return {filterProducts,setFilters, filters }
 }
 
 
 function App() {
   const[products]=useState(initialProducts)
 
-  const {filterProducts, setFilters} = useFilters()
+  const {filters, filterProducts, setFilters} = useFilters()
   const filteredProducts = filterProducts(products)
 
   return (
     <>
       <Header changeFilters={setFilters} />
       <Products products={filteredProducts} />
-      <Footer />
+      {IS_DEVELOPMENT && <Footer filters={filters} />}
     </>
   )
 }
