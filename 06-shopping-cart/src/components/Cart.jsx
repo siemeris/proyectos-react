@@ -1,9 +1,32 @@
 import { useId } from "react";
 import { CartIcon, ClearCartIcon, RemoveFromCartIcon } from "./Icons";
 import './Cart.css'
+import { useCart } from "../hooks/useCart";
 
 export function Cart() {
     const cartCheckboxId = useId()
+
+    const {cart, clearCart, addToCart} = useCart()
+
+    function CartItem({thumbnail, price, title, quantity, addToCart }){
+        return(
+            <li>
+                    <img
+                        src={thumbnail}
+                        alt={title}
+                    />
+                    <div>
+                        <strong>{title}</strong> - $ {price}
+                    </div>
+
+                    <footer>
+                        <small>
+                            Qty: {quantity}
+                        </small>
+                        <button onClick={addToCart}>+</button>
+                    </footer>
+                </li>)
+    }
 
     return (
         <>
@@ -13,7 +36,7 @@ export function Cart() {
             <input id={cartCheckboxId} type='checkbox' hidden />
 
             <aside className='cart'>
-                {/* <ul>
+                <ul>
                     {cart.map(product => (
                         <CartItem
                             key={product.id}
@@ -21,25 +44,8 @@ export function Cart() {
                             {...product}
                         />
                     ))}
-                </ul> */}
-                <li>
-                    <img
-                        src="https://i.dummyjson.com/data/products/30/thumbnail.jpg"
-                        alt="Iphone"
-                    />
-                    <div>
-                        <strong>Iphone</strong> - $ 300
-                    </div>
-
-                    <footer>
-                        <small>
-                            Qty: 1
-                        </small>
-                        <button >+</button>
-                    </footer>
-                </li>
-
-                <button>
+                </ul>
+                <button style={{color:"white"}} onClick={clearCart}>
                     <ClearCartIcon />
                 </button>
             </aside>

@@ -31,6 +31,8 @@ export const CartProvider = ({children})=>{
     }
 
     const removeFromCart = (product)=>{
+        //setCart(cart.filter(item => item.id !== product.id))
+        // Otra forma, con prevState:
         setCart(prevState => prevState.filter(item => item.id !== product.id))
     }
 
